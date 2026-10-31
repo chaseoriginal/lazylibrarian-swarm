@@ -1,0 +1,27 @@
+services:
+  lazylibrarian:
+    image: lscr.io/linuxserver/lazylibrarian:latest
+    container_name: lazylibrarian-swarm
+    environment:
+    - PUID=1000
+    - PGID=33
+    - TZ=America/Chicago
+    - DOCKER_MODS=linuxserver/mods:universal-calibre|linuxserver/mods:lazylibrarian-ffmpeg
+    volumes:
+    - lazylibrarian-swarm_config:/config
+    - /media/Multimedia/Books:/books
+    - /media/Multimedia/Incoming:/downloads
+    ports:
+    - target: 5299
+      published: 5299
+      protocol: tcp
+      mode: host
+    deploy:
+      placement:
+        constraints:
+        - node.role==manager
+      restart_policy:
+        condition: on-failure
+volumes:
+  lazylibrarian-swarm_config:
+    name: lazylibrarian-swarm_config
