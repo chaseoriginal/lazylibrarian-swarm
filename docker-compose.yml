@@ -1,6 +1,6 @@
 services:
   lazylibrarian:
-    image: lscr.io/linuxserver/lazylibrarian:latest@sha256:cbacdbdbaf1eab86a0ecaffdc27cd788999ec0502c8ea0ffa972914e9a149f79
+    image: lscr.io/linuxserver/lazylibrarian:latest@sha256:7962e01554966ebd283553a01ea41db5a7f57e30471eb32e3c2e00ee50f7c1f9
     container_name: lazylibrarian-swarm
     environment:
     - PUID=1000
